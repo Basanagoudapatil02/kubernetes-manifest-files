@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+     name: myngpod
+spec:
+  replicas: 5
+  selector:
+      matchLabels:
+        app: development
+  template:
+    metadata:
+       labels:
+         app: development
+    spec:
+     containers:
+           - image: nginx
+             name: ngcontainer
+             ports:
+               - containerPort: 80
+             livenessProbe:
+                   httpGet:
+                     path: /index.html
+                     port: 80
+                   initialDelaySeconds: 10

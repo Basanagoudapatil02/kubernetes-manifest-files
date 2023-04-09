@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+   name: mynginxpod1
+spec:
+   imagePullSecrets:
+    - name: mydockerhubsecret
+   containers:
+    - image: basanagoudapatil/mynginx
+      name: mynginxcontainer
+      ports:
+        - containerPort: 80

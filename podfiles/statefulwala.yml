@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+     name: mysfpod
+spec:
+  replicas: 5
+  selector:
+      matchLabels:
+        app: development
+  template:
+    metadata:
+       labels:
+         app: development
+    spec:
+     containers:
+           - image: mysql
+             name: mysqlcontainer
+             ports:
+               - containerPort: 3306
+             env:
+              - name: MYSQL_ROOT_PASSWORD
+                valueFrom:
+                     secretKeyRef:
+                             name: mysqlpass
+                             key:  MYSQL_ROOT_PASSWORD
+             volumeMounts:
+               - name: mysqlstorage
+                 mountPath: /var/lib/mysql
+  volumeClaimTemplates:
+            - metadata:
+                name: mysqlstorage
+              spec:
+                accessModes: ["ReadWriteOnce"]
+                resources:
+                      requests:
+                         storage: 2Gi

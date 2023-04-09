@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+   name: mypvc
+   labels:
+      app: testing
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+     requests:
+        storage: 10Gi
+  selector:
+     matchLabels:
+         type: awspv

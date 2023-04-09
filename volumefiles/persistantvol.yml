@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+   name: mysqlstorage
+   labels:
+     type: awspv
+spec:
+   capacity:
+     storage: 20Gi
+   accessModes:
+     - ReadWriteOnce
+   persistentVolumeReclaimPolicy: Retain
+   hostPath:
+     path: /home/ec2-user/mydata
+     type: Directory
+

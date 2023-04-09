@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myingress
+spec:
+  rules:
+   - host: blog.gmail.com
+     http:
+       paths:
+        - path: /blog
+          pathType: Prefix
+          backend:
+           service:
+             name: test
+             port:
+               number: 80
+   - host: mail.gmail.com
+     http:
+       paths:
+        - path: /mail
+          pathType: Prefix
+          backend:
+           service:
+             name: myservice
+             port:
+               number: 80
+
