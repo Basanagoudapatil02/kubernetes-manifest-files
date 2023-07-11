@@ -16,6 +16,9 @@ apt install kubeadm=1.20.0-00 kubectl=1.20.0-00 kubelet=1.20.0-00 -y
 
 ##To connect with cluster execute below commands on master node and worker node respectively
 --------------------------------------------- Master Node -------------------------------------------------- 
+
+open port number 6443 & 10250 in master security group
+
 sudo su
 kubeadm init
 
