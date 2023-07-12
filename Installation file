@@ -32,6 +32,7 @@ kubeadm token create --print-join-command
   
 
 ------------------------------------------- Worker Node ------------------------------------------------ 
+open port number 10250 in master security group
 sudo su
 kubeadm reset pre-flight checks
 -----> Paste the Join command on worker node and append `--v=5` at end
